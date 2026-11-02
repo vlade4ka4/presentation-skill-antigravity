@@ -1,0 +1,127 @@
+{
+  "primary_colors": [
+    {
+      "name": "Лазер",
+      "specs": [
+        "RGB 204 0 0",
+        "CMYK 0 100 100 20",
+        "#CC0000",
+        "RAL 3020 Traffic red"
+      ],
+      "tones": [
+        "Only web #FFFFFF 25%",
+        "Only web #000000 30%",
+        "Only web #000000 65%"
+      ],
+      "desc": "Основной цвет логотипаСимволизирует Лидерство"
+    },
+    {
+      "name": "Лазер",
+      "specs": [
+        "RGB 204 0 0",
+        "CMYK 0 100 100 20",
+        "#CC0000",
+        "RAL 3020 Traffic red"
+      ],
+      "tones": [],
+      "desc": ""
+    },
+    {
+      "name": "Графит",
+      "specs": [
+        "RGB 35 35 40",
+        "CMYK 13 13 0 84",
+        "#232328",
+        "RAL 7021 Black grey"
+      ],
+      "tones": [
+        "Only web #FFFFFF 20%",
+        "Only web #000000 45%"
+      ],
+      "desc": "Отождествляет собой чертеж, сделанный карандашом, набросок, шрифт"
+    },
+    {
+      "name": "Графит",
+      "specs": [
+        "RGB 35 35 40",
+        "CMYK 13 13 0 84",
+        "#232328",
+        "RAL 7021 Black grey"
+      ],
+      "tones": [],
+      "desc": ""
+    },
+    {
+      "name": "Металл",
+      "specs": [
+        "RGB 127 128 129",
+        "CMYK 2 1 0 49",
+        "#7F8081",
+        "RAL 7040 Window grey"
+      ],
+      "tones": [
+        "Only web #FFFFFF 35%",
+        "Only web #000000 15%"
+      ],
+      "desc": "Отождествляет собой металлические детали"
+    },
+    {
+      "name": "Металл",
+      "specs": [
+        "RGB 127 128 129",
+        "CMYK 2 1 0 49",
+        "#7F8081",
+        "RAL 7040 Window grey"
+      ],
+      "tones": [],
+      "desc": ""
+    },
+    {
+      "name": "Стекло",
+      "specs": [
+        "RGB 239 239 239",
+        "CMYK 0 0 0 2",
+        "#EFEFEF",
+        "RAL 9003 Signal white"
+      ],
+      "tones": [
+        "Only web #000000 5%",
+        "Only web #FFFFFF 65%"
+      ],
+      "desc": "Используется на темном фоне, также используется для создания эффекта прозрачности"
+    },
+    {
+      "name": "Стекло",
+      "specs": [
+        "RGB 239 239 239",
+        "CMYK 0 0 0 2",
+        "#EFEFEF",
+        "RAL 9003 Signal white"
+      ],
+      "tones": [],
+      "desc": ""
+    }
+  ],
+  "additional_colors_html": "<div class=\"brandbook-colors-additional\" id=\"colors-additional\">\n <div class=\"brandbook-colors-additional__container_left brandbook__block_left\">\n  <h2 class=\"brandbook__block_left__title\">\n   ДОПОЛНИТЕЛЬНЫЕ ЦВЕТА\n  </h2>\n  <h4>\n   Ночь\n   <br/>\n   Воздух\n   <br/>\n   Защита\n  </h4>\n  <p>\n   Дополнительные цвета не могут заменять основные. Они не используются на флагах, корпоративной продукции и одежде.\n  </p>\n </div>\n <div class=\"brandbook-colors-additional__container_right brandbook__block_right\">\n  <div class=\"brandbook-colors-additional__color brandbook-colors-additional__color_night\">\n   <div class=\"brandbook-colors-additional__color__text\">\n    <h3>\n     Ночь\n    </h3>\n    <p>\n     <span>\n      RGB 25 34 65\n     </span>\n     <span>\n      CMYK 90 77 27 60\n     </span>\n     <span>\n      #192241\n     </span>\n    </p>\n    <p>\n     Цвет воплощения, бесконечности и фундаментальных открытий.\n    </p>\n    <div>\n     <p>\n      Применяется для приборов и решений космического направления.\n     </p>\n     <p>\n      Олицетворяет глубину космического пространства как среду для будущих прорывов.\n     </p>\n     <p>\n      Этот цвет передаёт технологическую смелость, интеллектуальную мощь и абсолютную надёжность решений, работающих в экстремальных условиях вселенной.\n     </p>\n    </div>\n   </div>\n   <div class=\"brandbook-colors-additional__color__tone\">\n    Only web #FFFFFF 10%\n   </div>\n   <div class=\"brandbook-colors-additional__color__tone\">\n    Only web #000000 25%\n   </div>\n  </div>\n  <div class=\"brandbook-colors-additional__color brandbook-colors-additional__color_air\">\n   <div class=\"brandbook-colors-additional__color__text\">\n    <h3>\n     Воздух\n    </h3>\n    <p>\n     <span>\n      RGB 161 200 219\n     </span>\n     <span>\n      CMYK 41 10 10 1\n     </span>\n     <span>\n      #A1C8DB\n     </span>\n    </p>\n    <p>\n     Цвет доверия, ясности и чистоты.\n    </p>\n    <div>\n     <p>\n      Применяется для гражданской продукции.\n     </p>\n     <p>\n      Ассоциируется с небом — постоянной и надежной основой нашей жизни.\n     </p>\n     <p>\n      Этот цвет передаёт технологическую смелость, интеллектуальную мощь и абсолютную надёжность решений, работающих в экстремальных условиях вселенной.\n     </p>\n    </div>\n   </div>\n   <div class=\"brandbook-colors-additional__color__tone\">\n    Only web #FFFFFF 20%\n   </div>\n   <div class=\"brandbook-colors-additional__color__tone\">\n    Only web #000000 25%\n   </div>\n  </div>\n  <div class=\"brandbook-colors-additional__color brandbook-colors-additional__color_protect\">\n   <div class=\"brandbook-colors-additional__color__text\">\n    <h3>\n     Защита\n    </h3>\n    <p>\n     <span>\n      RGB 171 179 133\n     </span>\n     <span>\n      CMYK 35 16 53 9\n     </span>\n     <span>\n      #ABB385\n     </span>\n    </p>\n    <p>\n     Цвет функциональности, надежности и безупречной интеграции.\n    </p>\n    <div>\n     <p>\n      Применяется для продукции военного назначения.\n     </p>\n     <p>\n      Воплощает в себе ключевые принципы, на которых строится разработка наших приборов: абсолютный приоритет задачи, неуязвимость в любых условиях и идеальное взаимодействие с системой, оператором и окружающей средой.\n     </p>\n    </div>\n   </div>\n   <div class=\"brandbook-colors-additional__color__tone\">\n    Only web #FFFFFF 25%\n   </div>\n   <div class=\"brandbook-colors-additional__color__tone\">\n    Only web #000000 30%\n   </div>\n   <div class=\"brandbook-colors-additional__color__tone\">\n    Only web #000000 40%\n   </div>\n  </div>\n </div>\n</div>\n",
+  "all_color_classes": [
+    "brandbook-colors__color__text",
+    "brandbook-colors__color__tone",
+    "brandbook-colors-additional__color_night",
+    "brandbook-colors-additional__color_protect",
+    "brandbook-colors-additional",
+    "brandbook-colors-additional__color",
+    "brandbook-colors",
+    "brandbook-colors-additional__container_right",
+    "brandbook-colors__color_laser",
+    "brandbook-colors__color_graphite",
+    "brandbook-colors-additional__container_left",
+    "brandbook-colors__color_glass",
+    "brandbook-colors-additional__color__text",
+    "brandbook-colors__container_left",
+    "brandbook-colors__color",
+    "brandbook-colors__container_right",
+    "brandbook-colors__color_metall",
+    "brandbook-colors-additional__color_air",
+    "brandbook-colors-additional__color__tone"
+  ]
+}

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ОАО «Пеленг» — Брендбук & ТЗ на разработку</title>
+  <style>
+    :root {
+      --peleng-laser: #CC0000;
+      --peleng-graphite: #232328;
+      --peleng-metal: #7F8081;
+      --peleng-glass: #EFEFEF;
+      --peleng-night: #192241;
+      --peleng-air: #A1C8DB;
+      --peleng-protect: #ABB385;
+      --bg: #141417;
+      --card-bg: #232328;
+      --card-border: rgba(127, 128, 129, 0.35);
+      --font: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--peleng-glass);
+      font-family: var(--font);
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      user-select: none;
+    }
+
+    #deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      transform: scale(0.98);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5vw 7vw;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--peleng-laser);
+      margin-bottom: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    p.lead {
+      font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+      color: var(--peleng-metal);
+      line-height: 1.6;
+      max-width: 50ch;
+    }
+
+    /* Grids */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .swatch {
+      width: 100%;
+      height: 100px;
+      border-radius: 10px;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-meta {
+      font-size: 0.85rem;
+      color: var(--peleng-metal);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    /* Progress & Footer */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--peleng-laser);
+      transition: width 0.3s ease;
+      z-index: 100;
+    }
+
+    .footer-bar {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 2rem;
+      right: 2rem;
+      display: flex;
+      justify-content: space-between;
+      color: var(--peleng-metal);
+      font-size: 0.85rem;
+      z-index: 10;
+    }
+
+    .keys-hint span {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      margin: 0 2px;
+      color: var(--peleng-glass);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <main id="deck">
+    <!-- Slide 1 -->
+    <section class="slide active">
+      <div class="badge">✦ ОАО «ПЕЛЕНГ» • ТЗ ДЛЯ КОМАНДЫ</div>
+      <h1>Визуальный стиль & дизайн-система</h1>
+      <p class="lead">Спецификация официальных цветов, типографика (Bebas Neue / Roboto Condensed) и правила фронтенд-верстки.</p>
+    </section>
+
+    <!-- Slide 2 -->
+    <section class="slide">
+      <div class="badge">РАЗДЕЛ 1 • ОСНОВНАЯ ПАЛИТРА</div>
+      <h2>4 базовых цвета бренда</h2>
+      <div class="grid-4">
+        <div class="card">
+          <div class="swatch" style="background:#CC0000; color:#fff;">#CC0000</div>
+          <div class="card-title">Лазер</div>
+          <div class="card-meta">RAL 3020 Traffic red</div>
+          <div class="card-desc">Цвет логотипа и лидерства. Главный акцент интерфейса, первичные кнопки (CTA).</div>
+        </div>
+        <div class="card">
+          <div class="swatch" style="background:#232328; color:#fff; border:1px solid #444;">#232328</div>
+          <div class="card-title">Графит</div>
+          <div class="card-meta">RAL 7021 Black grey</div>
+          <div class="card-desc">Чертежи карандашом, шрифты. Базовый тёмный фон интерфейса.</div>
+        </div>
+        <div class="card">
+          <div class="swatch" style="background:#7F8081; color:#fff;">#7F8081</div>
+          <div class="card-title">Металл</div>
+          <div class="card-meta">RAL 7040 Window grey</div>
+          <div class="card-desc">Металлические детали. Нейтральные разделители, рамки, неактивные иконки.</div>
+        </div>
+        <div class="card">
+          <div class="swatch" style="background:#EFEFEF; color:#232328;">#EFEFEF</div>
+          <div class="card-title">Стекло</div>
+          <div class="card-meta">RAL 9003 Signal white</div>
+          <div class="card-desc">Контраст на тёмном фоне, прозрачность. Основной текст, фоновые карточки.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3 -->
+    <section class="slide">
+      <div class="badge">РАЗДЕЛ 2 • ПРОДУКТОВЫЕ НАПРАВЛЕНИЯ</div>
+      <h2>Специализированная палитра приборов</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="swatch" style="background:#192241; color:#fff;">#192241</div>
+          <div class="badge" style="margin:0 0 4px 0;">КОСМОС</div>
+          <div class="card-title">Ночь</div>
+          <div class="card-desc">Цвет бесконечности и фундаментальных открытий. Приборы и модули космической отрасли.</div>
+        </div>
+        <div class="card">
+          <div class="swatch" style="background:#A1C8DB; color:#232328;">#A1C8DB</div>
+          <div class="badge" style="margin:0 0 4px 0;">ГРАЖДАНСКАЯ</div>
+          <div class="card-title">Воздух</div>
+          <div class="card-desc">Доверие, чистота, ясность. Небесные технологии и линейка гражданской продукции.</div>
+        </div>
+        <div class="card">
+          <div class="swatch" style="background:#ABB385; color:#232328;">#ABB385</div>
+          <div class="badge" style="margin:0 0 4px 0;">СПЕЦНАЗНАЧЕНИЕ</div>
+          <div class="card-title">Защита</div>
+          <div class="card-desc">Функциональность, неуязвимость, интеграция. Изделия специального и военного назначения.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4 -->
+    <section class="slide">
+      <div class="badge">РАЗДЕЛ 3 • ШРИФТЫ БРЕНДА</div>
+      <h2>Типографическая иерархия</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="badge">ЗАГОЛОВКИ И АКЦЕНТЫ</div>
+          <div class="card-title" style="font-size:2rem; letter-spacing:0.05em;">BEBAS NEUE</div>
+          <div class="card-desc" style="margin-top:1rem; line-height:1.8;">
+            • Главные заголовки страниц (H1) и ключевые слоганы<br>
+            • Крупные цифровые метрики и KPI (10×, 99.8%)<br>
+            • Баннеры, титульные листы<br>
+            • Строго ЗАГЛАВНЫЕ буквы (UPPERCASE)
+          </div>
+        </div>
+        <div class="card">
+          <div class="badge">ОСНОВНОЙ ТЕКСТ И ИНТЕРФЕЙСЫ</div>
+          <div class="card-title" style="font-size:2rem;">Roboto Condensed</div>
+          <div class="card-desc" style="margin-top:1rem; line-height:1.8;">
+            • Текст абзацев, технические описания, статьи<br>
+            • Интерфейсы: формы, кнопки, таблицы данных, графики<br>
+            • Высокая плотность информации без потери читаемости
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5 -->
+    <section class="slide">
+      <div class="badge">РАЗДЕЛ 4 • BRAND INTEGRITY</div>
+      <h2>Правила и строгие ограничения (Do's & Don'ts)</h2>
+      <div class="grid-2">
+        <div class="card" style="border-color: rgba(52, 211, 153, 0.4); background: rgba(52, 211, 153, 0.04);">
+          <div class="card-title" style="color:#34d399;">✓ ЧТО НУЖНО ДЕЛАТЬ</div>
+          <div class="card-desc" style="margin-top:1rem; line-height:1.8;">
+            • Лазер (#CC0000) — строго как акцент и цвет логотипа<br>
+            • Графит (#232328) — как базовый тёмный фон интерфейса<br>
+            • Стекло (#EFEFEF) — для контрастного текста и карточек<br>
+            • Цвета направлений — строго внутри своих продуктовых разделов
+          </div>
+        </div>
+        <div class="card" style="border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.04);">
+          <div class="card-title" style="color:#f87171;">✕ СТРОГО ЗАПРЕЩЕНО</div>
+          <div class="card-desc" style="margin-top:1rem; line-height:1.8;">
+            • Заливать красным большие фоны (перегружает зрение)<br>
+            • Менять цвет логотипа на цвета дополнительных направлений<br>
+            • Использовать дополнительные цвета в корпоративной одежде/флагах<br>
+            • Смешивать цвета направлений (например, «Защиту» в космосе)
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-bar">
+    <div id="slideCounter">Слайд 1 из 5</div>
+    <div class="keys-hint">Навигация: <span>←</span> <span>→</span> или <span>Space</span> | Полный экран: <span>F</span> | Печать: <span>Ctrl + P</span></div>
+  </footer>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const progressBar = document.getElementById('progressBar');
+    const slideCounter = document.getElementById('slideCounter');
+    let currentIdx = 0;
+
+    function updateDeck(newIdx) {
+      if (newIdx < 0 || newIdx >= slides.length) return;
+      slides[currentIdx].classList.remove('active');
+      currentIdx = newIdx;
+      slides[currentIdx].classList.add('active');
+      
+      const progress = ((currentIdx + 1) / slides.length) * 100;
+      progressBar.style.width = progress + '%';
+      slideCounter.textContent = `Слайд ${currentIdx + 1} из ${slides.length}`;
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (['ArrowRight', 'Space', 'PageDown'].includes(e.code)) {
+        e.preventDefault();
+        updateDeck(currentIdx + 1);
+      } else if (['ArrowLeft', 'PageUp'].includes(e.code)) {
+        e.preventDefault();
+        updateDeck(currentIdx - 1);
+      } else if (e.code === 'KeyF') {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+    });
+
+    updateDeck(0);
+  </script>
+</body>
+</html>

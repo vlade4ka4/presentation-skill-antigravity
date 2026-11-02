@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation Studio — Демонстрационный Дек</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --success: #34d399;
+      --purple: #a855f7;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 0%, #172554 0%, var(--bg) 70%);
+      color: var(--text);
+      font-family: var(--font);
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      user-select: none;
+    }
+
+    #deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(0.97) translateY(12px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6vw 10vw;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: scale(1) translateY(0);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.5rem;
+      max-width: 22ch;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.8rem;
+    }
+
+    p.lead {
+      font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+      color: var(--text-muted);
+      line-height: 1.55;
+      max-width: 48ch;
+    }
+
+    /* Bento Grid */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2.2rem;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .card-num {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.03em;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    /* Progress & Footer */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100;
+    }
+
+    .footer-bar {
+      position: fixed;
+      bottom: 2rem;
+      left: 3rem;
+      right: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      z-index: 10;
+    }
+
+    .keys-hint span {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 3px 7px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.8rem;
+      color: var(--text);
+      margin: 0 3px;
+    }
+
+    /* Print to PDF */
+    @media print {
+      body { overflow: visible !important; background: #0b0f19 !important; }
+      #deck { display: block !important; height: auto !important; }
+      .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        page-break-after: always;
+        break-after: page;
+        height: 100vh !important;
+        width: 100vw !important;
+        box-sizing: border-box;
+      }
+      .progress-bar, .footer-bar { display: none !important; }
+      @page { size: 16in 9in landscape; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <main id="deck">
+    <!-- Slide 1 -->
+    <section class="slide active">
+      <div class="badge">✦ Antigravity Presentation Studio</div>
+      <h1>Создание презентаций нового поколения</h1>
+      <p class="lead">Скилл развернут: премиальная швейцарская типографика, адаптивные Bento-сетки и мгновенный экспорт в один клик.</p>
+    </section>
+
+    <!-- Slide 2 -->
+    <section class="slide">
+      <div class="badge">Ключевые преимущества</div>
+      <h2>Почему веб-деки превосходят классический PPT</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-num">0s</div>
+          <div class="card-title">Установка и зависимости</div>
+          <div class="card-desc">Открывается на любом устройстве: Mac, Windows, Linux, iOS и Android без стороннего софта.</div>
+        </div>
+        <div class="card">
+          <div class="card-num">100%</div>
+          <div class="card-title">Идеальная верстка</div>
+          <div class="card-desc">Шрифты не съезжают, блоки не накладываются друг на друга при открытии на чужом компьютере.</div>
+        </div>
+        <div class="card">
+          <div class="card-num">1 клик</div>
+          <div class="card-title">Печать в PDF</div>
+          <div class="card-desc">Просто нажмите Ctrl + P: встроенный @media print формирует чистый векторный альбомный документ 16:9.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3 -->
+    <section class="slide">
+      <div class="badge">Архитектурный выбор</div>
+      <h2>Нужен ли вам CLI?</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title" style="color: var(--accent);">Без CLI (Рекомендуется по умолчанию)</div>
+          <div class="card-desc" style="margin-top: 1rem; line-height: 1.8;">
+            • Интерактивный просмотр прямо в браузере<br>
+            • Управление клавишами: Space, стрелки, F (полный экран)<br>
+            • Полная автономность файла (работает без интернета)<br>
+            • Сохранение в PDF через стандартный диалог печати
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--purple);">С CLI (Подключаем по запросу)</div>
+          <div class="card-desc" style="margin-top: 1rem; line-height: 1.8;">
+            • Требуется только если нужен <b>настоящий файл .PPTX</b> для MS Office<br>
+            • Пакетная сборка презентаций в фоне через Marp CLI<br>
+            • Автоматический рендеринг без открытия окна браузера
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4 -->
+    <section class="slide">
+      <div class="badge">Готово к работе</div>
+      <h1>Скилл успешно подключен!</h1>
+      <p class="lead">Теперь вы можете просто сформулировать тему презентации, структуру или загрузить текст, и Antigravity сгенерирует для вас готовый дек.</p>
+    </section>
+  </main>
+
+  <footer class="footer-bar">
+    <div id="slideCounter">Слайд 1 из 4</div>
+    <div class="keys-hint">Навигация: <span>←</span> <span>→</span> или <span>Space</span> | Полный экран: <span>F</span> | Печать: <span>Ctrl + P</span></div>
+  </footer>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const progressBar = document.getElementById('progressBar');
+    const slideCounter = document.getElementById('slideCounter');
+    let currentIdx = 0;
+
+    function updateDeck(newIdx) {
+      if (newIdx < 0 || newIdx >= slides.length) return;
+      slides[currentIdx].classList.remove('active');
+      currentIdx = newIdx;
+      slides[currentIdx].classList.add('active');
+      
+      const progress = ((currentIdx + 1) / slides.length) * 100;
+      progressBar.style.width = progress + '%';
+      slideCounter.textContent = `Слайд ${currentIdx + 1} из ${slides.length}`;
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (['ArrowRight', 'Space', 'PageDown'].includes(e.code)) {
+        e.preventDefault();
+        updateDeck(currentIdx + 1);
+      } else if (['ArrowLeft', 'PageUp'].includes(e.code)) {
+        e.preventDefault();
+        updateDeck(currentIdx - 1);
+      } else if (e.code === 'KeyF') {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+    });
+
+    updateDeck(0);
+  </script>
+</body>
+</html>
